@@ -40,7 +40,7 @@ unpackage/
 /.apt_generated/
 /.apt_generated_tests/
 
-
+.DS_Store
 
 
 # 隐藏部分目录 
