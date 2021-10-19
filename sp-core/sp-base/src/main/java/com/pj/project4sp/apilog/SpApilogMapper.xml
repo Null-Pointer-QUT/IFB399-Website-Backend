@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.project4sp.apilog.SpApilogMapper">
+
+	
+	<!-- 保存入库 -->
+	<insert id="saveObj">
+		insert into 
+		sp_apilog (
+			req_id, req_ip, req_api, req_parame, req_type, req_token, req_header, user_id, admin_id, start_time,
+			res_code, res_msg, res_string, end_time, cost_time) 
+		values (
+			#{reqId}, #{reqIp}, #{reqApi}, #{reqParame}, #{reqType}, #{reqToken}, #{reqHeader}, #{userId}, #{adminId}, #{startTime},
+			#{resCode}, #{resMsg}, #{resString}, #{endTime}, #{costTime})
+	</insert>
+	
+	
+	<!-- 增 -->
+	<insert id="add">
+		insert into 
+		sp_apilog (req_id, req_ip, req_api, req_parame, req_token, user_id, admin_id, start_time) 
+		values (#{reqId}, #{reqIp}, #{reqApi}, #{reqParame}, #{reqToken}, #{userId}, #{adminId}, now(3))
+	</insert>
+
+	<!-- 删 -->
+	<delete id="delete">
+		delete from sp_apilog 
+		where id = #{id}
+	</delete>
+
+	<!-- 删 -->
+	<delete id="deleteByStartEnd">
+		delete from sp_apilog 
+		where start_time BETWEEN #{startTime} AND #{endTime} 
+	</delete>
+	
+	<!-- 改 -->
+	<update id="update">
+		update sp_apilog set
+		res_code = #{resCode},
+		res_msg = #{resMsg},
+		res_string = #{resString},
+		end_time = now(3), 
+		cost_time = #{costTime}
+		where req_id = #{reqId}
+	</update>
+	
+	<!-- ================================== 查询相关 ================================== -->
+	
+	<!-- 通用映射 -->
+	<resultMap id="model" type="com.pj.project4sp.apilog.SpApilog">
+		<result property="id" column="id" />
+		<result property="reqId" column="req_id" />
+		<result property="reqIp" column="req_ip" />
+		<result property="reqApi" column="req_api" />
+		<result property="reqParame" column="req_parame" />
+		<result property="reqType" column="req_type" />
+		<result property="reqToken" column="req_token" />
+		<result property="reqHeader" column="req_header" />
+		<result property="resCode" column="res_code" />
+		<result property="resMsg" column="res_msg" />
+		<result property="resString" column="res_string" />
+		<result property="userId" column="user_id" />
+		<result property="adminId" column="admin_id" />
+		<result property="startTime" column="start_time" />
+		<result property="endTime" column="end_time" />
+		<result property="costTime" column="cost_time" />
+	</resultMap>
+	
+	<!-- 公共查询sql片段 -->
+	<sql id="select_sql">
+		select * from sp_apilog 
+	</sql>
+	
+	<!-- 查询，根据条件(参数为null或0时默认忽略此条件) -->
+	<select id="getList" resultMap="model" >
+		<include refid="select_sql"></include>
+		where 1 = 1 
+		<if test=' this.isNotNull("id")  '>
+			and id = #{id} 
+		</if>
+		<if test=' this.isNotNull("req_id")  '>
+			and req_id = #{req_id}
+		</if>
+		<if test=' this.isNotNull("req_token")  '>
+			and req_token = #{req_token}
+		</if>
+		<if test=' this.isNotNull("req_ip")  '>
+			and req_ip = #{req_ip}
+		</if>
+		<if test=' this.isNotNull("req_api")  '>
+			and req_api = #{req_api}
+		</if>
+		<if test=' this.isNotNull("res_code")  '>
+			and res_code = #{res_code}
+		</if>
+		<if test=' this.isNotNull("user_id")  '>
+			and user_id = #{user_id}
+		</if>
+		<if test=' this.isNotNull("admin_id")  '>
+			and admin_id = #{admin_id}
+		</if>
+		<if test=' this.isNotNull("s_time")  '>
+			and start_time &gt;= #{s_time}
+		</if>
+		<if test=' this.isNotNull("e_time")  '>
+			and start_time &lt;= #{e_time}
+		</if>
+		order by 
+		<choose>
+			<when test='sort_type == 0'>id desc</when>
+			<when test='sort_type == 1'>start_time desc, id desc</when>
+			<when test='sort_type == 2'>cost_time desc, id desc</when>
+		 	<otherwise>id desc</otherwise>
+		 </choose>
+	</select>
+
+
+</mapper>

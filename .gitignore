@@ -1,0 +1,54 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.idea/
+*.iml
+.factorypath
+
+target/
+.project
+.classpath
+.settings
+
+/.idea/
+
+node_modules/
+bin/
+.settings/
+unpackage/
+/.apt_generated/
+/.apt_generated_tests/
+
+
+
+
+# 隐藏部分目录 
+
+sp-service/sp-more/src/main/java/com/pj/project/*
+doc/nacos
+doc/sentinel-dashboard
+
+
+
+

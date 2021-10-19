@@ -1,0 +1,9 @@
+# 端口
+server:
+    port: 8910
+
+spring: 
+    # 服务名称 
+    application.name: sp-task
+    # 当前环境
+    profiles.active: dev

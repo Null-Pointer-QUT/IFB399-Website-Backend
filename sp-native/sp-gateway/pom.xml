@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sp-native</artifactId>
+        <groupId>com.pj</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sp-gateway</artifactId>
+    <packaging>jar</packaging>
+
+	<!-- 指定一些属性 -->
+	<properties> 
+		<java.run.main.class>com.pj.SpGatewayApplication</java.run.main.class>
+	</properties>
+
+    <dependencies>
+    
+    
+		<!-- ================= 模块依赖 start ================= -->
+        <dependency>
+            <groupId>com.pj</groupId>
+            <artifactId>sp-nacos</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pj</groupId>
+            <artifactId>sp-gateway-auth</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+		<!-- ================= 模块依赖 end ================= -->
+    
+    	<!-- gateway网关 -->
+    	<dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-gateway</artifactId>
+	    </dependency>
+	    <!-- nacos 注册中心 -->
+	    <dependency>
+		    <groupId>com.alibaba.cloud</groupId>
+		    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+	    <!-- nacos 分布式配置中心 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        
+	    <!-- gateway 集成 sentinel  -->
+        <!-- <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+        </dependency> -->
+        
+        <!-- servlet-api -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		</dependency>
+
+        <!-- validation-api -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+           <version>6.0.9.Final</version>
+        </dependency>
+        
+    </dependencies>
+
+
+
+    
+	
+    
+    
+
+</project>

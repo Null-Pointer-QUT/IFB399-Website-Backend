@@ -1,0 +1,16 @@
+# 端口
+server:
+    port: 8003
+
+spring: 
+    # 服务名称 
+    application.name: sp-boot-admin
+    # 当前环境
+    profiles.active: dev
+    
+    # 配置访问用户名和密码 
+    security: 
+        user: 
+            name: admin
+            password: admin
+            

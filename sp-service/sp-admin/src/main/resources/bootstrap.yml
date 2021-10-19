@@ -1,0 +1,9 @@
+# 端口
+server:
+    port: 8011
+
+spring: 
+    # 服务名称 
+    application.name: sp-admin
+    # 当前环境
+    profiles.active: dev

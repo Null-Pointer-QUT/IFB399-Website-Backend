@@ -1,0 +1,31 @@
+spring: 
+    mvc:
+        format: 
+            date: yyyy-MM-dd HH:mm:ss
+    servlet:
+        multipart:
+            max-file-size: 1024MB
+            max-request-size: 1024MB
+            
+        
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+
+    myconfig:
+        md5_salt: whatclickme
+        is_pw: true
+    
+        
+        
+mybatis-plus:
+    type-aliases-package: com.pj.utils.sg
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+        map-underscore-to-camel-case: false
+      
+feign.hystrix.enabled: true
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 30000
+
+
+
+        

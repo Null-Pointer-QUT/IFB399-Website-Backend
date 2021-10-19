@@ -1,0 +1,10 @@
+# 端口
+server:
+    port: 8080
+
+spring: 
+    # 服务名称 
+    application.name: sp-gateway
+    # 当前环境
+    profiles.active: dev
+    

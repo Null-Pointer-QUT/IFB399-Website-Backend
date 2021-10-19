@@ -1,0 +1,9 @@
+# 端口
+server:
+    port: 8012
+
+spring: 
+    # 服务名称 
+    application.name: sp-home
+    # 当前环境
+    profiles.active: dev

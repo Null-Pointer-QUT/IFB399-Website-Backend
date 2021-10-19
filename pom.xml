@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.pj</groupId>
+	<artifactId>sp-cloud</artifactId>
+	<packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>sp-core</module>
+        <module>sp-native</module>
+        <module>sp-service</module>
+    </modules>
+	<!-- 指定一些属性 -->
+	<properties> 
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+    	<resource.delimiter>@</resource.delimiter>
+	    <maven.compiler.source>${java.version}</maven.compiler.source>
+	    <maven.compiler.target>${java.version}</maven.compiler.target>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	
+	<!-- 依赖管理 (不会真正的引入依赖，只会限定其版本) -->
+	<dependencyManagement>
+		<dependencies>
+		
+			<!-- SpringCloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.RELEASE</version>
+				<!-- <version>Hoxton.SR4</version> -->
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
+			<!-- SpringCloud Alibaba -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <!-- <version>2.2.3.RELEASE</version> -->
+                <version>2.2.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
+            <!-- Alibaba Nacos -->
+			<dependency>
+			    <groupId>com.alibaba.nacos</groupId>
+			    <artifactId>nacos-client</artifactId>
+			    <version>1.4.2</version>
+			</dependency>
+			
+			<!-- SpringBoot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.3.3.RELEASE</version> 
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	
+	
+	<dependencies>
+	    
+	</dependencies>
+	
+	
+	<!-- 构建配置 -->
+    <build>
+        <!-- 配置资源目录, 主要解决idea无法将代码中的mapper.xml编译的问题  -->
+    	<resources>
+			<resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+			</resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+		</resources>
+    </build>
+	
+</project>

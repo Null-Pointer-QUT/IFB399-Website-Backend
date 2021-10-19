@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sp-native</artifactId>
+        <groupId>com.pj</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sp-boot-admin</artifactId>
+    <packaging>jar</packaging>
+
+	<!-- 指定一些属性 -->
+	<properties> 
+		<java.run.main.class>com.pj.SpGatewayApplication</java.run.main.class>
+	</properties>
+
+    <dependencies>
+    
+    
+		<!-- ================= 模块依赖 start ================= -->
+        <dependency>
+            <groupId>com.pj</groupId>
+            <artifactId>sp-nacos</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+		<!-- ================= 模块依赖 end ================= -->
+    
+	    <!-- nacos 注册中心 -->
+	    <dependency>
+		    <groupId>com.alibaba.cloud</groupId>
+		    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+	    <!-- nacos 分布式配置中心 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        
+        <!-- spring-boot-admin 监控台 -->
+        <dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-server</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+        <!-- 集成security的登录验证 -->
+        <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-security</artifactId>
+	    </dependency>
+
+    </dependencies>
+
+
+
+    
+	
+    
+    
+
+</project>
